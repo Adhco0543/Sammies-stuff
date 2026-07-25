@@ -1,35 +1,37 @@
+"use client";
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { listings } from "@/data/listings";
+import { useParams } from "next/navigation";
+import { AddToCartButton } from "@/components/add-to-cart-button";
+import { useListings } from "@/components/listings-provider";
 
-type ListingPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function ListingDetailPage({ params }: ListingPageProps) {
+export default function ListingDetailPage() {
+  const params = useParams<{ id: string }>();
+  const { listings } = useListings();
   const listing = listings.find((item) => item.id === params.id);
 
   if (!listing) {
-    notFound();
+    return (
+      <main className="container">
+        <h1>Listing Not Found</h1>
+        <p>We couldn’t find the item you were looking for.</p>
+        <Link href="/listings">Back to listings</Link>
+      </main>
+    );
   }
 
   return (
     <main className="container">
       <Link href="/listings">← Back to listings</Link>
       <article className="card detail">
+        <p className="eyebrow">{listing.category}</p>
         <h1>{listing.title}</h1>
         <p>{listing.description}</p>
-        <p>
-          Category: <strong>{listing.category}</strong>
-        </p>
-        <p>
-          Era: <strong>{listing.era}</strong>
-        </p>
-        <p>
-          Price: <strong>${listing.price.toFixed(2)}</strong>
-        </p>
+        <dl className="facts">
+          <div><dt>Era</dt><dd>{listing.era}</dd></div>
+          <div><dt>Price</dt><dd>${listing.price.toFixed(2)}</dd></div>
+        </dl>
+        <AddToCartButton listing={listing} />
       </article>
     </main>
   );
