@@ -36,6 +36,11 @@ button, input, textarea, select { font: inherit; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
 .card { border: 1px solid #e5e7eb; background: white; border-radius: 0.75rem; padding: 1rem; box-shadow: 0 2px 8px rgb(31 41 55 / 0.04); }
 .card h2, .card h3 { margin-top: 0.2rem; }
+.listing-card { color: inherit; transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.listing-card:hover { border-color: #0f766e; box-shadow: 0 5px 14px rgb(15 118 110 / 0.15); text-decoration: none; transform: translateY(-2px); }
+.listing-card:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+.card-action { color: #0f766e; display: inline-block; font-weight: 700; margin-top: 0.5rem; }
+.empty-state { max-width: 500px; }
 .detail { margin-top: 1rem; max-width: 680px; }
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid #e5e7eb; padding-top: 1rem; }
 .facts dt { color: #6b7280; font-size: 0.85rem; }

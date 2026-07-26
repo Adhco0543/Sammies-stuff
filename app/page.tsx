@@ -1,12 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useListings } from "@/components/listings-provider";
 
 export default function HomePage() {
-  const { listings } = useListings();
-  const featured = listings.slice(0, 3);
-
   return (
     <main className="container">
       <section className="hero">
@@ -22,24 +18,6 @@ export default function HomePage() {
           <Link className="button button-secondary" href="/listings/new">
             Sell an Item
           </Link>
-        </div>
-      </section>
-
-      <section>
-        <div className="section-heading">
-          <h2>Featured Items</h2>
-          <Link href="/listings">View all</Link>
-        </div>
-        <div className="grid">
-          {featured.map((item) => (
-            <article key={item.id} className="card">
-              <p className="eyebrow">{item.category}</p>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <p><strong>${item.price.toFixed(2)}</strong></p>
-              <Link href={`/listings/${item.id}`}>View Details</Link>
-            </article>
-          ))}
         </div>
       </section>
     </main>
