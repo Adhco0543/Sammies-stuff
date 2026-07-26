@@ -18,13 +18,13 @@ export default function ListingsPage() {
       {listings.length ? (
         <div className="grid">
           {listings.map((item) => (
-            <article key={item.id} className="card">
+            <Link key={item.id} className="card listing-card" href={`/listings/${item.id}`}>
               <p className="eyebrow">{item.category}</p>
               <h2>{item.title}</h2>
               <p>{item.description}</p>
               <p><strong>${item.price.toFixed(2)}</strong></p>
-              <Link href={`/listings/${item.id}`}>View Details</Link>
-            </article>
+              <span className="card-action">View &amp; buy item</span>
+            </Link>
           ))}
         </div>
       ) : (

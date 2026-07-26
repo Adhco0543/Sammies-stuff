@@ -33,13 +33,13 @@ export default function HomePage() {
         {featured.length ? (
           <div className="grid">
             {featured.map((item) => (
-              <article key={item.id} className="card">
+              <Link key={item.id} className="card listing-card" href={`/listings/${item.id}`}>
                 <p className="eyebrow">{item.category}</p>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <p><strong>${item.price.toFixed(2)}</strong></p>
-                <Link href={`/listings/${item.id}`}>View Details</Link>
-              </article>
+                <span className="card-action">View &amp; buy item</span>
+              </Link>
             ))}
           </div>
         ) : (
