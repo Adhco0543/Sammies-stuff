@@ -4,8 +4,9 @@ import { ListingsProvider } from "@/components/listings-provider";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata = {
-  title: "Sammies Stuff",
-  description: "Marketplace for antiques, crystals, minerals, and ancient items",
+  title: "Sammies Stuff | Rocks, Crystals, Minerals & Antiques",
+  description:
+    "Shop Sammies Stuff for hand-picked rocks, crystals, minerals, antiques, and unusual one-of-a-kind treasures.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
